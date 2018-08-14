@@ -1,0 +1,47 @@
+html{height:80%;}
+
+body{
+	width:98%;	
+}
+
+clearfix {
+	width: 100%;
+	clear: both;
+	display: block;
+}
+
+span img:first-child{
+	position: fixed;
+	width: 100px;
+	z-index: 2;
+}
+
+#snimka{
+	position: fixed;
+	width: 100px;
+	z-index: 1;
+}
+
+table{
+	float:right;
+	border: 1px outset silver;
+	margin: 10px;
+	width: 80px;
+}
+
+td, th{
+	padding: 3px;
+	border: 1px solid grey;
+	width:50px;
+}
+
+input[type=text]{
+	width:50px;
+}
+
+td{
+	text-align: center;
+}
+
+
+

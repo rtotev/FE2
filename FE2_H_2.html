@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-US"
+  <head>
+	<meta charset="utf-8" />
+	<title>FE2_Homework_2</title>
+	<style>
+	  input[type=number]
+	  {
+		width: 55px;		
+	  }  
+	  
+	  #svg_container
+	  {
+		height:500px;
+		width:300px;
+		display:block;	
+		margin-top:0px;
+		margin-left:500px;		
+	  }
+	</style>
+	</head>
+  <body>
+	<span id="controls">
+		<label>	
+		  position X: 
+		  <input type="number" id="move_x" name="draw_x" value="500" min="0" max='1000' /> px<br />
+		</label>
+		<label>	
+		  position Y: 
+		  <input type="number" id="move_y" name="draw_y" value="0" min="0" max='1000' /> px<br>
+		  Range: 0 to 1000<br /><br />
+		<button id="vertical_progress_down" type="button" onclick="moveSvg();">Change Position</button> 
+	</span> 
+	  <span id="svg_container">
+		<svg id="dice_and_logo" width="270" height="500px">
+		  <g id="dice">
+			  <rect x="50px" y="50px" width="200px" height="200px" rx="15px" ry="15px" stroke-width="3px" stroke="black" fill="white" />
+			  <circle cx="90" cy="90" r="25" stroke="black" stroke-width="3" fill="black" />
+			  <circle cx="210" cy="90" r="25" stroke="black" stroke-width="3" fill="black" />
+			  <circle cx="90" cy="210" r="25" stroke="black" stroke-width="3" fill="black" />
+			  <circle cx="210" cy="210" r="25" stroke="black" stroke-width="3" fill="black" />
+			  <circle cx="150" cy="150" r="25" stroke="black" stroke-width="3" fill="black" />
+		  </g>
+		  <g id="logo">
+			  <circle cx="150" cy="380" r="110" stroke="RGBA(204, 204, 204, 1)" stroke-width="4" fill="url(#grad1)" />
+			  <circle cx="150" cy="380" r="90" stroke="RGBA(204, 204, 204, 1)" stroke-width="16" fill="url(#grad1)" />	  
+			  <polyline points="115,302 185,440 235,350" stroke="RGBA(204, 204, 204, 1)" stroke-width="20" fill="none" />
+			  <polyline points="185,302 115,440 65,350" stroke="RGBA(204, 204, 204, 1)" stroke-width="20" fill="none" />
+			  <line x1="135" y1="370" x2="165" y2="370" stroke="RGBA(51, 102, 153, 1)" stroke-width="10px" fill="url(#grad1)" /></line>	
+			  <radialGradient id="grad1" cx="18%" cy="18%" r="25%" fx="8%" fy="8%">
+				<stop offset="10%" style="stop-color:rgba(255, 255, 255, 0.25);stop-opacity:0.25" />
+				<stop offset="70%" style="stop-color:rgb(51, 102, 153);stop-opacity:0.75" />
+			  </radialGradient>
+		  </g>
+		</svg>
+	  </span>
+	<script>		
+	  function moveSvg(){
+		var move_x = document.getElementById('move_x').value;		
+		var move_y = document.getElementById('move_y').value;
+		if (move_x < 0 || move_y < 0 || move_x > 1000 || move_y > 1000){
+		  alert('Out of range');
+		}
+		else{		
+		  document.getElementById('svg_container').style.marginLeft = move_x + 'px';
+		  document.getElementById('svg_container').style.marginTop = move_y + 'px';	
+		  document.getElementById('move_x').value = move_x;
+		  document.getElementById('move_y').value = move_y;	
+		}
+	  }		
+	</script>
+  </body>  
+</html>

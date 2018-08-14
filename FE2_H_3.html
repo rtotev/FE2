@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+	<meta charset="utf-8" />
+	<title>FE2_Homework_3</title>
+	<style>
+      h3{
+	    text-align: center;
+	    margin-left: 20px;		  
+        margin-right: 20px;
+	  }
+	  
+	  input{
+		border-top-left-radius: 15px;
+		border-bottom-right-radius: 15px;
+      }
+	   
+      #controls{
+		color: white;
+		background-color: grey;
+		margin-left: 20px;		  
+		margin-right: 20px;
+		text-align: center;
+		padding: 10px;
+	  }
+	   
+	  #mapholder{
+		margin-left: 20px;		  
+		margin-right: 20px;
+		text-align: center;
+		border-bottom-left-radius: 15px;
+		border-bottom-right-radius: 15px;
+		border: 1px solid grey;
+		background-color: lightgrey;
+		visibility: hidden;
+      }
+	</style>
+  </head>
+  <body>
+	<div>
+	  <h3>Домашна върху HTML5 API & Rounded Corners</h3>	  
+	</div>
+	  <div id="controls">
+		  Местоположение: 
+		  <input type="button" name="take_position" onclick="getLocation();" value="ВЗЕМИ" />
+		  <input type="button" name="save_position" onclick="savePositionLocalStortage();" value="ЗАПАЗИ" />
+		  <input type="button" name="load_position" onclick="loadPosition();" value="ЗАРЕДИ" />
+	  </div>
+	<div id="mapholder"></div>
+	<script>
+		var x = document.getElementById('mapholder');
+		var latitude = '';
+		var longitude = '';
+		
+		function getLocation() {
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(showPosition, showError);
+			} else {
+				x.innerHTML = 'Geolocation is not supported by this browser.';
+			}
+		}
+		
+		function showPosition(position) {			
+			var latlon = position.coords.latitude + ',' + position.coords.longitude;			
+			var img_url = 'https://maps.googleapis.com/maps/api/staticmap?center='
+			+latlon+'&zoom=14&size=800x400&sensor=false';
+			
+			document.getElementById('mapholder').style.visibility = "visible";
+			document.getElementById('mapholder').innerHTML = '<img src="'+img_url+'">';							
+			
+			latitude = position.coords.latitude;
+			longitude = position.coords.longitude;			
+		}
+		
+		function showError(error) {
+			switch(error.code) {
+				case error.PERMISSION_DENIED:
+					x.innerHTML = "User denied the request for Geolocation."
+					break;
+				case error.POSITION_UNAVAILABLE:
+					x.innerHTML = "Location information is unavailable."
+					break;
+				case error.TIMEOUT:
+					x.innerHTML = "The request to get user location timed out."
+					break;
+				case error.UNKNOWN_ERROR:
+					x.innerHTML = "An unknown error occurred."
+					break;
+			}
+		}	
+		
+		function savePositionLocalStortage(){			
+			if(typeof(Storage) !== 'undefined') {			  
+			  localStorage.setItem('latitude', latitude);
+			  localStorage.setItem('longitude', longitude);
+			  alert('Save with Success!');
+			  console.log(localStorage.getItem('latitude'));
+			  console.log(localStorage.getItem('longitude'));				
+			}	
+			else{
+				resultDiv.innerHTML = 'localStorage is not supported. Tru to update your browser or use Mozilla Firefox.';
+			}
+		}
+		
+		function loadPosition(){	
+			alert('Loading position: ' + localStorage.getItem('latitude') + '   ' + localStorage.getItem('longitude'));
+			
+			latlon = localStorage.getItem('latitude') + ',' + localStorage.getItem('longitude');
+			
+			img_url = 'https://maps.googleapis.com/maps/api/staticmap?center='
+			+latlon+'&zoom=14&size=800x400&sensor=false';
+			document.getElementById('mapholder').innerHTML = '<img src="'+img_url+'">';	
+			document.getElementById('mapholder').style.visibility = "visible";
+		}
+	</script>
+  </body>  
+</html>

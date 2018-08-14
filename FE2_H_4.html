@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en-EN">
+  <head>
+	<meta charset="utf-8" />
+	<title>FE2_H_4</title>
+	<link type="text/css" rel="stylesheet" href="FE2_H_4.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+	<!--[if lt IE 9]>  
+		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>  
+	<![endif]-->
+  </head>
+  <body>
+	<div id="all">
+		<header>
+			<nav id="nav" class="show_nav">
+				<span id="link" class="displ_visible">
+					<a href="#">Начало</a>
+					<a href="#">Галерия</a>
+					<a href="#">Награди</a>
+					<a href="#">Участници</a>
+					<a href="#">За контакти</a>
+				</span>
+				<button type="button" id="show_hide_btn" class="float_right" onclick="showHide()">&#8592;</button>
+			</nav>
+		</header>
+		<main>
+			<aside class="flex-item clear-fix float_right">
+					<form action="#" method="post">
+						<fieldset>
+							<legend>Форма за участие в конкурса</legend>
+							<div class="flex-container column stretch">
+								<label class="flex-item2">
+									Първо име
+									<input type="text" placeholder="Въведи името си" required="required" />
+								</label>
+								<label class="flex-item2">
+									Фамилия
+									<input type="text" placeholder="Въведи фамилията си" required="required" />
+								</label>
+								<label class="flex-item2">
+									Заглавие
+									<input type="text" placeholder="Заглавието на снимката" required="required" />
+								</label>
+								<label class="flex-item2">
+									Конкурс
+									<select disabled="disabled">
+										<option>Първа пролет</option>
+									</select>
+								</label>
+								<span class="flex-item2">
+									<label>
+										<input id="btn1" type="file" />
+										<img class="fake_button" src="https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/Icon_-_upload_photo.svg/512px-Icon_-_upload_photo.svg.png" alt="upload_file" />
+									</label>
+									*Кликнете на картинката вляво, за да прикачите файл
+								</span>
+							</div>
+							<label>
+								<input id="btn2" type="submit" />
+								<span class="fake_submit">Изпрати</span>
+							</label>
+							<div class="clear-fix"></div>
+						</fieldset>
+					</form>
+				</aside>
+			<section id="section_1">
+				<h4 class="center">Галерия</h4>
+				<span>
+					<img id="img_1" src="https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-9/12046613_1659095874304572_3540283843448717993_n.png?oh=439aa60c405f63477b2095e63acaaa0d&oe=58943224"
+						alt="No pictures" />
+					<img id="img_2" src="https://www.bgosoftware.com/blog/wp-content/uploads/2015/10/Featured_photo_webacademy.jpg"
+						alt="No pictures" />
+				</span>
+				
+				<ul class="pagination center">
+					<li><a href="#">«</a></li>
+					<li><a class="active" href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#">6</a></li>
+					<li><a href="#">7</a></li>
+					<li><a href="#">»</a></li>
+				</ul>
+			</section>
+			
+			<div class="row center">
+				<a class="read-more button-blue button" href="#" onclick="#" ><span>Read More</span></a>   
+			</div>
+		</main>
+		
+		<footer></footer>
+		
+	</div>	
+  </body>
+  <script>
+		function showHide(){
+			var visible = document.getElementById('link');
+			console.log(visible.className);
+			var btn = document.getElementById('show_hide_btn');
+			if(visible.className == 'displ_visible'){
+				document.getElementById('link').className = 'displ_none';				
+				document.getElementById('nav').className = 'hide_nav';
+				document.getElementById('show_hide_btn').className = 'float_left';
+				document.getElementById('show_hide_btn').innerHTML = '&#8594;';				
+			}
+			else{
+				document.getElementById('link').className = 'displ_visible';				
+				document.getElementById('nav').className = 'show_nav';
+				document.getElementById('show_hide_btn').className = 'float_right';
+				document.getElementById('show_hide_btn').innerHTML = '&#8592;';
+			}
+		}
+	</script>
+</html>

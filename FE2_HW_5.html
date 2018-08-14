@@ -1,0 +1,188 @@
+<!-- uncompleted project! -->
+
+<!doctype html>
+<html lang="bg-BG">
+	<head>
+		<meta charset="utf-8" />
+		<title>FE2_HW_5</title>
+		<link rel="stylesheet" type="text/css" href="FE2_HW_5.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+	</head>
+	<body>
+		<span>
+			<img src="http://www.fragileoasis.org/static/images/badges/empty.png" alt="Can`t load picture" />
+			<img id="snimka" src="http://webacademy.bg/wp-content/uploads/2016/05/rosen.totev@gmail.com_avatar-100x100.jpg" alt="Can`t load picture" />
+			<div class="clearfix"></div>
+		</span>
+		<table id="control_panel">
+			<tr>
+				<th colspan="4">Control Panel</th>
+			</tr>
+			
+			<tr>
+				<td>
+					<input type="text" placeholder="50" />
+				</td>
+				<td colspan="2">
+					<input type="button" data-direction="top" id="move_top" value="Горе" />
+				</td>
+				<td>
+					<input type="text" placeholder="50" />
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<input type="button" data-direction="left" id="move_left" value="Ляво" />
+				</td>
+				<td colspan="2">
+					<input type="text" placeholder="50" />
+				</td>
+				<td>
+					<input type="button" data-direction="right" id="move_right" value="Дясно" />
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<input type="text" placeholder="50" />
+				</td>
+				<td colspan="2">
+					<input type="button" data-direction="bottom" id="move_bottom" value="Долу" />
+				</td>
+				<td>
+					<input type="text" placeholder="50" />
+				</td>
+			</tr>
+			
+			<tr>
+				<th colspan="4"	>Control Panel</th>				
+			</tr>
+			
+			<tr>
+				<td>Горна</td>
+				<td>
+					<input type="text" placeholder="8" />
+				</td>
+				<td>
+					<select name="border_style_top" data-border="top">
+						<option value="solid">solid</option>
+						<option value="dashed">dashed</option>
+						<option value="dotted">dotted</option>
+						<option value="ridge">ridge</option>
+					</select>
+				</td>
+				<td>
+					<input type="color" value="#FF0000" />
+				</td>						
+			</tr>
+			
+			<tr>
+				<td>Дясна</td>
+				<td>
+					<input type="text" placeholder="8" />
+				</td>
+				<td>
+					<select name="border_style_right" data-border="right">
+						<option value="solid">solid</option>
+						<option value="dashed">dashed</option>
+						<option value="dotted">dotted</option>
+						<option value="ridge">ridge</option>
+					</select>
+				</td>
+				<td>
+					<input type="color" value="#FF0000" />
+				</td>			
+			</tr>
+			
+			<tr>
+				<td>Долна</td>
+				<td>
+					<input type="text" placeholder="8" />
+				</td>
+				<td>
+					<select name="border_style_bottom" data-border="bottom">
+						<option value="solid">solid</option>
+						<option value="dashed">dashed</option>
+						<option value="dotted">dotted</option>
+						<option value="ridge">ridge</option>
+					</select>
+				</td>
+				<td>
+					<input type="color" value="#0000FF" />
+				</td>			
+			</tr>
+			
+			<tr>
+				<td>Лява</td>
+				<td>
+					<input type="text" placeholder="8" />
+				</td>
+				<td>
+					<select name="border_style_left" data-border="left">
+						<option value="solid">solid</option>
+						<option value="dashed">dashed</option>
+						<option value="dotted">dotted</option>
+						<option value="ridge">ridge</option>
+					</select>
+				</td>
+				<td>
+					<input type="color" value="#FFFF00" />
+				</td>			
+			</tr>
+			
+			<tr>
+				<td>Всички</td>
+				<td>
+					<input type="text" placeholder="8" />
+				</td>
+				<td>
+					<select name="border_style">
+						<option value="solid">solid</option>
+						<option value="dashed">dashed</option>
+						<option value="dotted">dotted</option>
+						<option value="ridge">ridge</option>
+					</select>
+				</td>
+				<td>
+					<input type="color" value="#00FFFF" />
+				</td>			
+			</tr>			
+		</table>
+		<script>
+			var cur_pos_x;
+			var cur_pos_y;
+			var move_speed = 50;	
+			var output_console;
+			var is_half = false;
+			
+			function move_snimka(new_direction)
+			{
+				output_console.html('');
+				
+				switch(new_direction)
+				{
+					case 'right': cur_pos_x = Number($('#snimka').offset().left) + move_speed; break;
+					case 'left': cur_pos_x = Number($('#snimka').offset().left) - move_speed; break;
+					case 'top': cur_pos_y = Number($('#snimka').offset().top) - move_speed; break;
+					case 'bottom': cur_pos_y = Number($('#snimka').offset().top) + move_speed; break;
+					default: output_console.html('wrong direction: '+new_direction); break;
+				}
+				
+				console.log(cur_pos_x);
+				console.log(cur_pos_y);
+				
+				$('#snimka').css('left', cur_pos_x);
+				$('#snimka').css('top', cur_pos_y);
+			}
+			
+			$(document).ready(function () {
+				output_console = $('#output_console');
+				
+				$('input[type=button]').click(function () {
+					move_snimka($(this).data('direction'));
+				});
+			});
+		</script>
+	</body>
+</html>

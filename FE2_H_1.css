@@ -1,0 +1,51 @@
+nav a img
+{
+  max-height: 25px;	
+}
+
+footer a:link
+{
+  text-decoration: none;
+  padding-left: 5px;
+}
+
+header
+{
+  border: 3px solid lightblue;
+  overflow: hidden;	
+}
+
+nav
+{
+  margin-left:auto;
+  margin-right:auto;
+  border: 2px solid black;
+  width: 50%;	
+  padding: 10px;
+  height: 30px;	
+  text-align: center;
+}
+
+main
+{
+  border: 1px solid red;
+  width: 950px;
+  margin-top: 20px;
+}
+
+footer
+{	
+  border: 3px solid lightgreen;
+  clear: both;
+}
+
+footer span
+{
+  float: right;
+  padding-right: 5px;
+}
+
+aside
+{
+  float: right;
+}

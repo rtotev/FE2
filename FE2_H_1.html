@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="bg-BG">
+  <head>
+    <meta charset="utf-8" />
+    <title>Мултимедия</title>
+    <link rel="stylesheet" type="text/css" href="FE2_H_1.css" />
+  </head>
+  <body>
+    <header>
+	  <nav>
+	    <a href="http://webacademy.bg">
+		  <img src="http://webacademy.bg/wa_logo.png" alt="Няма изображение" />
+	    </a>
+	    <a href="http://www.vbox7.com/">
+		  <img src="http://vignette2.wikia.nocookie.net/logopedia/images/0/07/Vbox7fff.png/revision/latest?cb=20150912154244" alt="Няма изображение" />
+	    </a>
+	    <a href="http://google.bg/">
+		  <img src="http://tech.co/wp-content/uploads/2013/10/GoogleHummingbird.jpg" alt="Няма изображение" />
+	    </a>
+	  </nav>
+	</header>
+	<aside>
+	  <figure>					
+		<img height="400px" src="http://lorempixel.com/400/580" alt="Няма изображение" />
+		<figcaption>Random picture</figcaption>
+	  </figure>
+	</aside>
+	<main>	  
+	  <section>
+		<h2>Какво имаме да правим днес</h2>
+		<details>
+		  <summary>Семантичен уеб и мултимедия</summary>
+		  <ul>
+			<li>Използвайте HTML5 елементи за да създадете документ с такава структура.</li>
+			<li><b>Спазвайте правилата за писане на качествен и <u>подреден</u> код!</b></li>
+			<li>Единичните тагове също се затварят: &lt;img src="" alt="" /&gt;. </li>
+			<li>Таговете и техните елементи се изписват в долен регистър(т.е. с малки букви).</li>
+			<li>Между отделните атрибути има 1 интервал разстояние, но между даден атрибут и неговата стойност и знака равно("=")НЯМА <wbr>разстояние.</li>
+			<li>Между аритметичните оператори в Java Script трябва да има разстояние.</li>						
+		  </ul>
+		</details>
+		<details>
+		  <summary>Вмъкнете видео</summary>
+		  Вие избрахте видеото, което да вмъкнете. Ако не намирате лесно, използвайте примера от упражненията.
+		  <video id="myVideo" width="400" controls="controls" onplay="changeButtonPause();" onpause="changeButtonPlay()" onended="changeButtonPlay()" >
+		    <source src="http://www.w3schools.com/html/movie.mp4" type="video/mp4" />
+			Немя видео
+		  </video><br />		  
+		<input type="button"  id="play_pause" onclick="PlayPauseVideio();" value="Play" /><br /><br />
+		</details>
+		<details>
+		  <summary>Вмъкнете аудио</summary>
+		  Вие избрахте аудиото, което да вмъкнете. Ако не намирате лесно, използвайте примера от упражненията.
+		  <audio controls>			 
+			  <source src="http://www.w3schools.com/html/horse.ogg" type="audio/mpeg" />
+			  <source src="http://www.w3schools.com/html/horse.mp3" type="audio/mpeg" />			  
+				Няма аудио
+		  </audio>
+		</details>		
+		<details>
+		  <summary>Вмъкване от <mark>YouTube</mark></summary>
+		  <iframe width="300px" height="250px" allowfullscreen="allowfullscreen" src="http://youtube.com/embed/h9XIOAynQfI?autoplay=0">
+			Browser Not Support IFrame
+		  </iframe>
+		</details>
+		<br /><br /><br />
+		<table>
+		  <caption>Прогрес бар</caption>
+		  <tr>
+		    <td colspan="3">
+			  <progress transform="rotate(90deg)" id="progress" value="50" min="0" max="100"></progress><br />
+			</td>
+		  </tr>
+		  <tr>
+		    <td width="20%">
+			  <button type="button" onclick="changeProgressValue(-10)">-</button>
+			</td>
+			<td width="60%" align="center">
+			  <span id="viewProgressValue">50<span>
+			</td>
+		    <td width="20%" align="right">
+			  <button type="button" onclick="changeProgressValue(10)">+</button>
+			</td>
+		  </tr>
+		</table>	
+	  </section>	 
+    </main>	
+	<footer>
+	  <a href="http://webacademy.bg">&copy WebAcademy</a>
+	  <span>2016</span>
+	</footer>
+	<script>
+	  var vid = document.getElementById("myVideo");
+
+	  function PlayPauseVideio(){
+		var buttonValue = document.getElementById("play_pause").value;
+		if (buttonValue == "Play"){
+		vid.play();
+		document.getElementById("play_pause").value = "Pause";
+		}
+		else{
+			vid.pause();
+			document.getElementById("play_pause").value = "Play";
+		}		
+	  }
+	  
+	  function changeButtonPause(){
+		  document.getElementById("play_pause").value = "Pause";	  
+	  };
+	  
+	  function changeButtonPlay(){
+		  document.getElementById("play_pause").value = "Play";
+	  };
+	 								
+	  
+	  var currentValue = document.getElementById('progress').value;
+	  function changeProgressValue(step)
+	  {
+		if (currentValue == 0 && step == -10){
+		  alert('Вие достигнахте минимална стойност "0" !');
+		}		
+		else if (currentValue == 100 && step == 10){
+		  alert('Вие достигнахте максиимална стойност "100" !');
+		}
+		else{
+		  currentValue += step;
+		  document.getElementById('progress').value = currentValue;
+		}		
+		document.getElementById('viewProgressValue').innerHTML = currentValue;	  	  
+	  }	  
+	</script>
+  </body>	
+</html>
